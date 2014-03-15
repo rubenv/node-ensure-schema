@@ -42,5 +42,31 @@ describe('SQLite', function () {
         });
     });
 
+    it('Creates tables with multiple columns', function (done) {
+        var schema = function () {
+            this.table("people", function () {
+                this.field('id', 'INTEGER', { primary: true });
+                this.field('name', 'TEXT');
+            });
+        };
+
+        testSchema(db, schema, function (err, schema) {
+            if (err) {
+                return done(err);
+            }
+
+            assert.deepEqual(schema.tables.people.id, {
+                type: 'INTEGER',
+                options: { primary: true }
+            });
+            assert.deepEqual(schema.tables.people.name, {
+                type: 'TEXT',
+                options: { primary: false }
+            });
+
+            done(); 
+        });
+    });
+
     it('Can add columns');
 });
