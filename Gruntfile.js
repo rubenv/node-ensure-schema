@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig({
         jshint: {
-            all: ['lib/*.js', 'test/*.js'],
+            all: ['*.js', '{test,lib}/*{,/*}{,/*}.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -24,7 +24,7 @@ module.exports = function(grunt) {
 
         mochacli: {
             options: {
-                files: 'test/*.js'
+                files: ['test/*.js', 'test/*/*.js']
             },
             spec: {
                 options: {
