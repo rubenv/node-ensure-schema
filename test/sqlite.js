@@ -34,7 +34,7 @@ describe('SQLite', function () {
                 return done(err);
             }
 
-            assert.deepEqual(schema.tables.people.id, {
+            assert.deepEqual(schema.tables.people.fields.id, {
                 type: 'INTEGER',
                 options: { primary: true }
             });
@@ -56,11 +56,11 @@ describe('SQLite', function () {
                 return done(err);
             }
 
-            assert.deepEqual(schema.tables.people.id, {
+            assert.deepEqual(schema.tables.people.fields.id, {
                 type: 'INTEGER',
                 options: { primary: true }
             });
-            assert.deepEqual(schema.tables.people.name, {
+            assert.deepEqual(schema.tables.people.fields.name, {
                 type: 'TEXT',
                 options: { primary: false }
             });
@@ -83,11 +83,11 @@ describe('SQLite', function () {
                         return cb(err);
                     }
 
-                    assert.deepEqual(schema.tables.people.id, {
+                    assert.deepEqual(schema.tables.people.fields.id, {
                         type: 'INTEGER',
                         options: { primary: true }
                     });
-                    assert.equal(schema.tables.people.name, undefined);
+                    assert.equal(schema.tables.people.fields.name, undefined);
 
                     cb(); 
                 });
@@ -105,11 +105,11 @@ describe('SQLite', function () {
                         return cb(err);
                     }
 
-                    assert.deepEqual(schema.tables.people.id, {
+                    assert.deepEqual(schema.tables.people.fields.id, {
                         type: 'INTEGER',
                         options: { primary: true }
                     });
-                    assert.deepEqual(schema.tables.people.name, {
+                    assert.deepEqual(schema.tables.people.fields.name, {
                         type: 'TEXT',
                         options: { primary: false }
                     });

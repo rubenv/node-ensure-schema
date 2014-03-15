@@ -13,15 +13,15 @@ describe('SQLite schemas', function () {
         sqliteMapper.extractSchema(db, function (err, schema) {
             assert.notEqual(schema, undefined);
             assert.notEqual(schema.tables, undefined);
-            assert.notEqual(schema.tables.test, undefined);
+            assert.notEqual(schema.tables.test.fields, undefined);
 
-            assert.deepEqual(schema.tables.test.id, {
+            assert.deepEqual(schema.tables.test.fields.id, {
                 type: 'INTEGER',
                 options: {
                     primary: true
                 }
             });
-            assert.deepEqual(schema.tables.test.name, {
+            assert.deepEqual(schema.tables.test.fields.name, {
                 type: 'TEXT',
                 options: {
                     primary: false
