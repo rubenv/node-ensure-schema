@@ -11,9 +11,6 @@
     "grunt-mocha-cli": "~1.7.0",
     "sqlite3": "~2.2.0"
   },
-  "peerDependencies": {
-    "sqlite3": "~2.2.0"
-  },
   "scripts": {
     "test": "grunt test",
     "prepublish": "grunt build"
