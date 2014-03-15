@@ -21,6 +21,12 @@ describe('SQLite schemas', function () {
                     primary: true
                 }
             });
+            assert.deepEqual(schema.tables.test.name, {
+                type: 'TEXT',
+                options: {
+                    primary: false
+                }
+            });
             done(err);
         });
     });
