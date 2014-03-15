@@ -27,6 +27,13 @@ describe('SQLite schemas', function () {
                     primary: false
                 }
             });
+
+            assert.notEqual(schema.tables.test.indexes, undefined);
+            assert.deepEqual(schema.tables.test.indexes.testname, {
+                unique: false,
+                fields: ['name']
+            });
+
             done(err);
         });
     });
