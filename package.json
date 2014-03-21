@@ -1,6 +1,6 @@
 {
   "name": "ensure-schema",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Ensure that databases always have a given structure.",
   "main": "lib/index.js",
   "devDependencies": {
