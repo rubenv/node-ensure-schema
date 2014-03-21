@@ -27,6 +27,13 @@ describe('SQLite schemas', function () {
                     primary: false
                 }
             });
+            assert.deepEqual(schema.tables.test.fields.value, {
+                type: 'INT',
+                options: {
+                    primary: false,
+                    default: 1
+                }
+            });
 
             assert.notEqual(schema.tables.test.indexes, undefined);
             assert.deepEqual(schema.tables.test.indexes.testname, {

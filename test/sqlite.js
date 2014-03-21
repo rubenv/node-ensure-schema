@@ -20,6 +20,7 @@ describe('SQLite', function () {
 
     beforeEach(function () {
         db = new sqlite3.Database(':memory:');
+        //db.on('trace', function (query) { console.log(query); });
     });
 
     it('Creates tables', function (done) {
@@ -88,6 +89,7 @@ describe('SQLite', function () {
                 var schema = function () {
                     this.table("people", function () {
                         this.field('id', 'INTEGER', { primary: true });
+                        this.field('value', 'INTEGER', { default: 3 });
                     });
                 };
 
@@ -99,6 +101,10 @@ describe('SQLite', function () {
                     assert.deepEqual(schema.tables.people.fields.id, {
                         type: 'INTEGER',
                         options: { primary: true }
+                    });
+                    assert.deepEqual(schema.tables.people.fields.value, {
+                        type: 'INTEGER',
+                        options: { primary: false, default: 3 }
                     });
                     assert.equal(schema.tables.people.fields.name, undefined);
 
