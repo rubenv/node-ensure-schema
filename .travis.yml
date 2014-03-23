@@ -3,6 +3,9 @@ node_js:
   - "0.8"
   - "0.10"
   - "0.11"
+matrix:
+  allow_failures:
+      - node_js: "0.11"
 before_install:
   - npm install -g grunt-cli
   - bash prepare-postgresql.sh
