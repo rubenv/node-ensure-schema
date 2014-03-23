@@ -1,4 +1,4 @@
 #!/bin/bash
 
-createuser -S -d -e test
+createuser -S -R -d -e test
 createdb -e test  
