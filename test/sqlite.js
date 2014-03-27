@@ -189,4 +189,35 @@ describe('SQLite', function () {
             }
         ], done);
     });
+
+    it('Can supply multiple schemas', function (done) {
+        var schema = function () {
+            this.table("people", function () {
+                this.field('id', 'INTEGER', { primary: true });
+            });
+        };
+
+        var schema2 = function () {
+            this.table("animals", function () {
+                this.field('id', 'INTEGER', { primary: true });
+            });
+        };
+
+        testSchema(db, [schema, schema2], function (err, schema) {
+            if (err) {
+                return done(err);
+            }
+
+            assert.deepEqual(schema.tables.people.fields.id, {
+                type: 'INTEGER',
+                options: { primary: true }
+            });
+            assert.deepEqual(schema.tables.animals.fields.id, {
+                type: 'INTEGER',
+                options: { primary: true }
+            });
+
+            done(); 
+        });
+    });
 });
