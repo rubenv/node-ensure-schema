@@ -214,4 +214,22 @@ describe('PostgreSQL', function () {
             }
         ], done);
     });
+
+    it('Maps type columns', function (done) {
+        var schema = function () {
+            this.table("people", function () {
+                this.field('signup_at', 'timestamp');
+                this.field('name', 'varchar');
+            });
+        };
+
+        async.series([
+            function (cb) {
+                testSchema(db, schema, cb);
+            },
+            function (cb) {
+                testSchema(db, schema, cb);
+            }
+        ], done);
+    });
 });
